@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/shazron/test-github-action/issues"
   },
-  "homepage": "https://github.com/shazron/test-github-action#readme"
+  "homepage": "https://github.com/shazron/test-github-action#readme",
+  "dependencies": {
+    "decamelize": "^6.0.0",
+    "semver": "^7.3.7",
+    "to-camel-case": "^1.0.0",
+    "to-capital-case": "^1.0.0"
+  }
 }
