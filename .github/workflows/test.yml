@@ -27,4 +27,4 @@ jobs:
         with:
           pre-release-tag: ${{ github.event.inputs.pre_release_tag }}
       - run: cat package.json
-      - run: echo ${{ steps.run_tests.outputs.pre-release-version }} 
+      - run: echo ${{ steps.pre_release_version.outputs.pre-release-version }} 
