@@ -2,7 +2,7 @@ name: test-workflow
 on:
   workflow_dispatch:
     inputs:
-      pre_release_tag:
+      pre-release-tag:
         description: 'The pre-release tag to use'
         required: false
         default: 'pre'
@@ -22,9 +22,9 @@ jobs:
           npm install
           npm test
       - name: Update your package.json with an npm pre-release version
-        id: pre_release_version
+        id: pre-release-version
         uses: shazron/update-prerelease-npm-version@v1.0.0
         with:
-          pre-release-tag: ${{ github.event.inputs.pre_release_tag }}
+          pre-release-tag: ${{ github.event.inputs.pre-release-tag }}
       - run: cat package.json
-      - run: echo ${{ steps.pre_release_version.outputs.pre-release-version }} 
+      - run: echo ${{ steps.pre-release-version.outputs.pre-release-version }} 
