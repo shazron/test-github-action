@@ -23,10 +23,10 @@ jobs:
           npm test
       - name: Update your package.json with an npm pre-release version
         id: pre-release-version
-        uses: shazron/update-prerelease-npm-version@v1.1.1
+        uses: shazron/update-prerelease-npm-version@v1.1.2
         with:
           pre-release-tag: ${{ github.event.inputs.pre-release-tag }}
-          dependencies-to-update: 'semver\nto-camel-case'
+          dependencies-to-update: 'semver,to-camel-case'
           dependencies-to-update-version-tag: 'cli-next'
 
       - run: cat package.json
