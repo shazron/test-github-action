@@ -21,9 +21,9 @@ jobs:
       - run: |
           npm install
           npm test
-      - name: Update your package.json with an npm pre-release version
+      - name: Update your package.json with an npm pre-release version, and update dependencies with pre-release versions
+        uses: adobe/update-prerelease-npm-version@v1.0.0
         id: pre-release-version
-        uses: shazron/update-prerelease-npm-version@v1.1.9
         with:
           pre-release-tag: ${{ github.event.inputs.pre-release-tag }}
           dependencies-to-update: 'semver,to-camel-case'
