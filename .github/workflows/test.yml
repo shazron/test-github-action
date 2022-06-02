@@ -3,9 +3,22 @@ on:
   workflow_dispatch:
     inputs:
       pre-release-tag:
-        description: 'The pre-release tag to use'
+        description: 'The pre-release tag use in the version'
         required: false
         default: 'pre'
+      dist-tag:
+        description: 'The dist-tag use'
+        required: false
+        default: 'next'
+      dependencies-to-update:
+        description: 'csv of dependencies to update with the dist-tag'
+        required: false
+        default: 'semver,to-camel-case'
+      package-name:
+        description: 'override the package name'
+        required: false
+        default: 'my-cli-next'
+
 jobs:
   checkout:
     name: checkout
@@ -26,9 +39,9 @@ jobs:
         id: pre-release-version
         with:
           pre-release-tag: ${{ github.event.inputs.pre-release-tag }}
-          dependencies-to-update: 'semver,to-camel-case'
-          dependencies-to-update-version-tag: 'cli-next'
-          package-name: 'my-cli-next'
+          dependencies-to-update: ${{ github.event.inputs.dependencies-to-update }}
+          dependencies-to-update-version-tag: ${{ github.event.inputs.dist-tag }}
+          package-name: ${{ github.event.inputs.package-name }}
 
       - run: cat package.json
       - run: echo ${{ steps.pre-release-version.outputs.pre-release-version }} 
